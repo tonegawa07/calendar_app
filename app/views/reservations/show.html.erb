@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>使用日:</strong>
+  <%= @reservation.start_time.strftime('%Y/%m/%d') %>
+</p>
+
+<p>
+  <strong>研究室名:</strong>
+  <%= @reservation.lab %>
+</p>
+
+<p>
+  <strong>使用者:</strong>
+  <%= @reservation.name %>
+</p>
+
+<p>
+  <strong>サンプル数:</strong>
+  <%= @reservation.number_of_samples %>
+</p>
+
+<p>
+  <strong>開始時間:</strong>
+  <%= @reservation.start_time.strftime('%H:%M') %>
+</p>
+
+<p>
+  <strong>終了時間:</strong>
+  <%= @reservation.end_time.strftime('%H:%M') %>
+</p>
+
+<p>
+  <strong>備考:</strong>
+  <%= @reservation.information %>
+</p>
+
+<%= link_to '予約内容の変更', edit_reservation_path(@reservation) %> |
+<%= link_to '戻る', reservations_path %>
