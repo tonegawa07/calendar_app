@@ -1,0 +1,42 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "simple_calendar";
+
+body { padding-top: 30px; }
+
+/* header */
+
+#logo {
+  float: left;
+  margin: auto 20px;
+  font-size: 1.7em;
+  color: #fff;
+  padding-top: 15px;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* calendar */
+
+.simple-calendar {
+  .calendar-heading{
+    text-align: center;
+    font-size: 1.5em;
+    padding-bottom: 15px;
+  }
+  .calendar-title{
+    font-size: 1.8em;
+  }
+  .wday-6 {
+    background: #e0efff;
+  }
+  .wday-0 {
+    background: #ffeaea;
+  }
+  .has-events {
+    background: #98fb98;
+  }
+ }

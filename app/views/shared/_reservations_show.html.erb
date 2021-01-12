@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<table class="attributes">
+  <tr>
+    <th>使用日</th>
+    <td><%= @reservation.start_time.strftime('%Y/%m/%d') %></td>
+  </tr>
+  <tr>
+    <th>予約日</th>
+    <td><%= @reservation.updated_at.strftime('%Y/%m/%d') %></td>
+  </tr>
+  <tr>
+    <th>研究室名</th>
+    <td><%= @reservation.lab %></td>
+  </tr>
+  <tr>
+    <th>使用者</th>
+    <td><%= @reservation.name %></td>
+  </tr>
+  <tr>
+    <th>サンプル数</th>
+    <td><%= @reservation.number_of_samples %></td>
+  </tr>
+  <tr>
+    <th>開始時間</th>
+    <td><%= @reservation.start_time.strftime('%H:%M') %></td>
+  </tr>
+  <tr>
+    <th>終了時間</th>
+    <td><%= @reservation.end_time.strftime('%H:%M') %></td>
+  </tr>
+  <tr>
+    <th>備考</th>
+    <td><%= @reservation.information %></td>
+  </tr>
+</table>
