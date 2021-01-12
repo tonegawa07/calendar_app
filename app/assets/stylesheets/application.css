@@ -3,3 +3,17 @@
  *= require_tree .
  *= require_self
  */
+
+ table.attributes {
+  margin: 10px;
+  width: 500px;
+}
+
+table.attributes td, table.attributes th {
+  border: 1px solid #000;
+  padding: 5px;
+}
+
+table.attributes th {
+  background-color: #ccc;
+}
