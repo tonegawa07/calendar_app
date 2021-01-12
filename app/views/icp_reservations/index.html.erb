@@ -8,6 +8,7 @@
   <thead>
     <tr>
       <th>使用日</th>
+      <th>予約日</th>
       <th>研究室名</th>
       <th>使用者</th>
       <th>サンプル数</th>
@@ -19,10 +20,10 @@
   </thead>
 
   <tbody>
-    <% @reservations = Reservation.where("start_time >= ?", Time.now).order(:start_time).limit(5) %>
-    <% @reservations.each do |reservation| %>
+    <% @reservations.where("end_time >= ?", Time.now).order(:end_time).limit(5).each do |reservation| %>
       <tr>
         <td><%= reservation.start_time.strftime('%Y/%m/%d') %></td>
+        <td><%= reservation.updated_at.strftime('%Y/%m/%d') %></td>
         <td><%= reservation.lab %></td>
         <td><%= reservation.name %></td>
         <td><%= reservation.number_of_samples %></td>
@@ -30,7 +31,7 @@
         <td><%= reservation.end_time.strftime('%H:%M') %></td>
         <td><%= reservation.information %></td>
         <td><%= link_to '詳細', reservation %></td>
-        <td><%= link_to '予約内容の変更', edit_reservation_path(reservation) %></td>
+        <td><%= link_to '予約内容の変更', edit_icp_reservation_path(reservation) %></td>
         <td><%= link_to '削除', reservation, method: :delete, data: { confirm: '本当に削除してよろしいですか?' } %></td>
       </tr>
     <% end %>
@@ -39,7 +40,6 @@
 
 <br>
 
-<% @reservations = Reservation.all %>
 <%= month_calendar events: @reservations do |date, reservations| %>
   <%= date %>
 
@@ -48,11 +48,11 @@
       <%= reservation.name %>
       <%= reservation.start_time.strftime('%H:%M') %>-<%= reservation.end_time.strftime('%H:%M') %>
       <%= link_to '詳細', reservation %>
-      <%= link_to '変更', edit_reservation_path(reservation) %>
+      <%= link_to '変更', edit_icp_reservation_path(reservation) %>
       <%= link_to '削除', reservation, method: :delete, data: { confirm: '本当に削除してよろしいですか?' } %>
 
     </div>
   <% end %>
 <% end %>
 
-<%= link_to '予約はこちらから', new_reservation_path %>
+<%= link_to '予約はこちらから', new_icp_reservation_path %>

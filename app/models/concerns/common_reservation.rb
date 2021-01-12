@@ -1,10 +1,5 @@
-class Reservation < ApplicationRecord
-  validates :lab, presence: true
-  validates :name, presence: true
-
-  validate :date_before_start
-  validate :end_before_start
-  validate :same_day_start_end
+module CommonReservation
+  extend ActiveSupport::Concern
 
   def date_before_start
     errors.add(:start_time, "は過去の日付を選択できません") if start_time < Date.today
