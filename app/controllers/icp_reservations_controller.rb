@@ -1,6 +1,7 @@
 class IcpReservationsController < ApplicationController
   include CommonReservations
 
+  before_action :logged_in_user
   before_action :set_icp_reservation, only: [:show, :edit, :update, :destroy]
 
   # GET /icp_reservations

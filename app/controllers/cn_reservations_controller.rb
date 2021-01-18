@@ -1,6 +1,7 @@
 class CnReservationsController < ApplicationController
   include CommonReservations
 
+  before_action :logged_in_user
   before_action :set_cn_reservation, only: [:show, :edit, :update, :destroy]
 
   # GET /cn_reservations
