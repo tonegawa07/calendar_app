@@ -5,6 +5,14 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  resources :cn_reservations
-  resources :icp_reservations
+  resources :cn_reservations do
+    collection do
+      get :history
+    end
+  end
+  resources :icp_reservations do
+    collection do
+      get :history
+    end
+  end
 end

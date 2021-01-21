@@ -1,9 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>ICP-OES 予約システム</h1>
-
-<h2>直近の使用予定</h2>
-
+<h1>CN分析機器 予約システム</h1>
 <table class="table">
   <thead>
     <tr>
@@ -20,7 +15,7 @@
   </thead>
 
   <tbody>
-    <% @reservations.where("end_time >= ?", Time.now).order(:end_time).limit(5).each do |reservation| %>
+    <% @reservations.each do |reservation| %>
       <tr>
         <td><%= reservation.start_time.strftime('%Y/%m/%d') %></td>
         <td><%= reservation.updated_at.strftime('%Y/%m/%d') %></td>
@@ -38,23 +33,4 @@
   </tbody>
 </table>
 
-<h2><%= link_to "使用履歴", history_icp_reservations_path, class: "btn btn-lg btn-warning" %></h2>
-
-<br>
-
-<%= month_calendar events: @reservations do |date, reservations| %>
-  <%= date.day %>
-
-  <% reservations.each do |reservation| %>
-    <div>
-      <%= reservation.name %>
-      <%= reservation.start_time.strftime('%H:%M') %>-<%= reservation.end_time.strftime('%H:%M') %>
-      <%= link_to '詳細', reservation, class: "btn btn-xs btn-info" %>
-      <%= link_to '変更', edit_icp_reservation_path(reservation), class: "btn btn-xs btn-warning" %>
-      <%= link_to '削除', reservation, method: :delete, data: { confirm: '本当に削除してよろしいですか?' }, class: "btn btn-xs btn-danger" %>
-
-    </div>
-  <% end %>
-<% end %>
-
-<%= link_to '新規予約', new_icp_reservation_path, class: "btn btn-lg btn-success" %>
+<%= link_to '戻る', cn_reservations_path %>

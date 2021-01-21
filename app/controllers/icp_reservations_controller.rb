@@ -51,6 +51,11 @@ class IcpReservationsController < ApplicationController
     redirect_to icp_reservations_url
   end
 
+  # GET /icp_reservations/history
+  def history
+    @reservations = IcpReservation.where("end_time < ?", Time.now).order(:end_time)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_icp_reservation

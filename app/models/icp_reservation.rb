@@ -4,7 +4,7 @@ class IcpReservation < ApplicationRecord
   validates :lab, presence: true
   validates :name, presence: true
 
-  validate :date_before_start
+  # validate :date_before_start
   validate :end_before_start
   validate :same_day_start_end
   validate :reservation_should_not_overlap, if: :new_or_start_or_end_time_changed
