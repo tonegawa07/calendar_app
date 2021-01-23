@@ -18,8 +18,16 @@
     <td><%= @reservation.name %></td>
   </tr>
   <tr>
+    <th>サンプルの種類</th>
+    <td><%= @reservation.sample_type %></td>
+  </tr>
+  <tr>
     <th>サンプル数</th>
     <td><%= @reservation.number_of_samples %></td>
+  </tr>
+  <tr>
+    <th>サンプルの重量</th>
+    <td><%= @reservation.sample_weight %></td>
   </tr>
   <tr>
     <th>開始時間</th>
@@ -28,6 +36,14 @@
   <tr>
     <th>終了時間</th>
     <td><%= @reservation.end_time.strftime('%H:%M') %></td>
+  </tr>
+  <tr>
+    <th>酸素ガス残量</th>
+    <td><%= @reservation.oxygen %></td>
+  </tr>
+  <tr>
+    <th>アルゴンガス残量</th>
+    <td><%= @reservation.argon %></td>
   </tr>
   <tr>
     <th>備考</th>

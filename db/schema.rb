@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_23_032332) do
+ActiveRecord::Schema.define(version: 2021_01_23_051201) do
 
   create_table "cn_reservations", force: :cascade do |t|
     t.string "lab"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(version: 2021_01_23_032332) do
     t.text "information"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "sample_type"
+    t.string "sample_weight"
+    t.float "oxygen"
+    t.float "argon"
   end
 
   create_table "icp_reservations", force: :cascade do |t|
@@ -32,6 +36,10 @@ ActiveRecord::Schema.define(version: 2021_01_23_032332) do
     t.text "information"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "argon_1"
+    t.string "argon_2"
+    t.string "argon_3"
+    t.string "argon_4"
   end
 
   create_table "users", force: :cascade do |t|

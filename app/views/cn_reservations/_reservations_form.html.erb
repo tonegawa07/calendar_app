@@ -1,0 +1,62 @@
+<%= form_with(model: @reservation, local: true) do |form| %>
+  <%= render 'shared/error_messages', object: form.object %>
+
+  <div class="field">
+    <%= form.label :lab, "研究室名" %>
+    <%= form.text_field :lab %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name, "使用者" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sample_type, "サンプルの種類" %>
+    <%= form.text_field :sample_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_of_samples, "サンプル数" %>
+    <%= form.number_field :number_of_samples %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sample_weight, "サンプルの重量" %>
+    <%= form.text_field :sample_weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_time, "開始時間" %>
+    <%= form.datetime_select :start_time, 
+    start_year: Time.now.year, 
+    end_year: Time.now.year+1, 
+    minute_step: 30, 
+    use_month_numbers: true 
+    %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_time, "終了時間" %>
+    <%= form.datetime_select :end_time, 
+    start_year: Time.now.year, 
+    end_year: Time.now.year+1, 
+    minute_step: 30, 
+    use_month_numbers: true 
+    %>
+  </div>
+
+  <div class="field">
+    <%= form.label :oxygen, "酸素ガス残量" %>
+    <%= form.number_field :oxygen %>
+  </div>
+
+  <div class="field">
+    <%= form.label :argon, "アルゴンガス残量" %>
+    <%= form.number_field :argon %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
