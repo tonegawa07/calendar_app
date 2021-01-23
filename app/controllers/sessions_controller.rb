@@ -8,8 +8,14 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to root_path
     else
-      flash.now[:danger] = "パスワードが正しくありません．"
-      render 'new'
+      user = User.find_by(name: "gest")
+      if user && user.authenticate(params[:session][:password])
+        log_in user
+        redirect_to root_path
+      else
+        flash.now[:danger] = "パスワードが正しくありません．"
+        render 'new'        
+      end
     end
   end
   
