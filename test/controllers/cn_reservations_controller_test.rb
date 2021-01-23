@@ -13,8 +13,18 @@ class CnReservationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index when logged in" do
     log_in_as("password")
-    get cn_reservations_url
+    get cn_reservations_path
     assert_response :success
+    delete logout_path
+    log_in_as("gest")
+    get cn_reservations_path
+    assert_response :success
+  end
+
+  test "should get new when logged in as non-admin" do
+    log_in_as("gest")
+    get new_cn_reservation_path, headers: { "HTTP_REFERER": "http://www.example.com/cn_reservations" }
+    assert_redirected_to cn_reservations_url
   end
 
   test "should get new when logged in as admin" do
@@ -36,6 +46,16 @@ class CnReservationsControllerTest < ActionDispatch::IntegrationTest
     log_in_as("password")
     get cn_reservation_url(@cn_reservation)
     assert_response :success
+    delete logout_path
+    log_in_as("gest")
+    get cn_reservation_url(@cn_reservation)
+    assert_response :success
+  end
+
+  test "should get edit when logged in as non-admin" do
+    log_in_as("gest")
+    get edit_cn_reservation_url(@cn_reservation), headers: { "HTTP_REFERER": "http://www.example.com/cn_reservations" }
+    assert_redirected_to cn_reservations_url
   end
 
   test "should get edit when logged in as admin" do
@@ -50,12 +70,19 @@ class CnReservationsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to cn_reservation_url(@cn_reservation)
   end
 
+  test "should destroy cn_reservation when logged in as non-admin" do
+    log_in_as("gest")
+    assert_no_difference('CnReservation.count') do
+      delete cn_reservation_url(@cn_reservation), headers: { "HTTP_REFERER": "http://www.example.com/cn_reservations" }
+    end
+    assert_redirected_to cn_reservations_url
+  end
+
   test "should destroy cn_reservation when logged in as admin" do
     log_in_as("password")
     assert_difference('CnReservation.count', -1) do
       delete cn_reservation_url(@cn_reservation)
     end
-
     assert_redirected_to cn_reservations_url
   end
 end
