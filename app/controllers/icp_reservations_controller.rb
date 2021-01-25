@@ -55,6 +55,14 @@ class IcpReservationsController < ApplicationController
   # GET /icp_reservations/history
   def history
     @reservations = IcpReservation.where("end_time < ?", Time.now).order(:end_time)
+    
+    respond_to do |format|
+      format.html
+      format.csv do
+        filename = Time.now.strftime("%Y%m%d") + "_ICP-OES_使用履歴"
+        send_data render_to_string, filename: "#{filename}.csv", type: :csv
+      end
+    end
   end
 
   private

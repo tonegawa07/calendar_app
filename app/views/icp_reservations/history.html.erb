@@ -41,4 +41,9 @@
   </tbody>
 </table>
 
+<!-- 現在のユーザーが管理者のときに限り，ダウンロードボタンが表示される -->
+<% if current_user.admin? %>
+  <%= link_to "ダウンロード(CSV)", history_icp_reservations_path(format: :csv), class: "btn btn-success" %>
+<% end %>
+
 <%= link_to '戻る', icp_reservations_path %>

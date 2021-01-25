@@ -52,10 +52,18 @@ class CnReservationsController < ApplicationController
     redirect_to cn_reservations_url
   end
 
-    # GET /icp_reservations/history
-    def history
-      @reservations = CnReservation.where("end_time < ?", Time.now).order(:end_time)
+  # GET /icp_reservations/history
+  def history
+    @reservations = CnReservation.where("end_time < ?", Time.now).order(:end_time)
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        filename = Time.now.strftime("%Y%m%d") + "_CN分析機器_使用履歴"
+        send_data render_to_string, filename: "#{filename}.csv", type: :csv
+      end
     end
+  end
   
   private
     # Use callbacks to share common setup or constraints between actions.
