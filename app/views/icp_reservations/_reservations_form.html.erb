@@ -22,7 +22,8 @@
     start_year: Time.now.year, 
     end_year: Time.now.year+1, 
     minute_step: 30, 
-    use_month_numbers: true 
+    use_month_numbers: true,
+    date_separator:'/'
     %>
   </div>
 
@@ -32,27 +33,28 @@
     start_year: Time.now.year, 
     end_year: Time.now.year+1, 
     minute_step: 30, 
-    use_month_numbers: true 
+    use_month_numbers: true,
+    date_separator:'/'
     %>
   </div>
 
   <div class="field">
-    <%= form.label :argon_1, "1" %>
+    <%= form.label :argon_1, "アルゴン残量:1" %>
     <%= form.text_field :argon_1 %>
   </div>
 
   <div class="field">
-    <%= form.label :argon_2, "2" %>
+    <%= form.label :argon_2, "アルゴン残量:2" %>
     <%= form.text_field :argon_2 %>
   </div>
 
   <div class="field">
-    <%= form.label :argon_3, "3" %>
+    <%= form.label :argon_3, "アルゴン残量:3" %>
     <%= form.text_field :argon_3 %>
   </div>
 
   <div class="field">
-    <%= form.label :argon_4, "4" %>
+    <%= form.label :argon_4, "アルゴン残量:4" %>
     <%= form.text_field :argon_4 %>
   </div>
 

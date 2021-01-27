@@ -1,4 +1,23 @@
 <h1>ICP-OES 使用履歴</h1>
+
+<%= search_form_for @q, url: :history_icp_reservations do |f| %>
+  <%= f.label :start_time, '使用日' %>
+  <%= f.date_select :start_time_gteq, use_month_numbers: true, date_separator:'/', include_blank: true %> 〜　
+  <%= f.date_select :start_time_lteq, use_month_numbers: true, date_separator:'/', include_blank: true %>
+
+  <br>
+  <br>
+  <%= f.submit 'Search', 'data-disable-with' => false %>
+
+  <br>
+  <br>
+  <!-- 現在のユーザーが管理者のときに限り，ダウンロードボタンが表示される -->
+  <% if current_user.admin? %>
+    <!-- <%= link_to "ダウンロード(CSV)", history_cn_reservations_path(format: :csv), class: "btn btn-success" %> -->
+    <button type='submit' name='format' value='csv' class="btn btn-success"> ダウンロード (CSV) </button>
+  <% end %>
+<% end %>
+
 <table class="table">
   <thead>
     <tr>
@@ -40,10 +59,5 @@
     <% end %>
   </tbody>
 </table>
-
-<!-- 現在のユーザーが管理者のときに限り，ダウンロードボタンが表示される -->
-<% if current_user.admin? %>
-  <%= link_to "ダウンロード(CSV)", history_icp_reservations_path(format: :csv), class: "btn btn-success" %>
-<% end %>
 
 <%= link_to '戻る', icp_reservations_path %>

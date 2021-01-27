@@ -54,7 +54,8 @@ class CnReservationsController < ApplicationController
 
   # GET /icp_reservations/history
   def history
-    @reservations = CnReservation.where("end_time < ?", Time.now).order(:end_time)
+    @q = CnReservation.where("end_time < ?", Time.now).order(:end_time).ransack(params[:q])
+    @reservations = @q.result
 
     respond_to do |format|
       format.html

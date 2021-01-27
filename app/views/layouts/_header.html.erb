@@ -4,6 +4,10 @@
     <nav>
       <ul class="nav navbar-nav">
         <li><%= link_to "トップページ", root_path %></li>
+        <% if logged_in? %>
+        <li><%= link_to "ICP-OES", icp_reservations_path %></li>
+        <li><%= link_to "CN分析機器", cn_reservations_path %></li>
+        <% end %>
         <li><%= link_to "共通機器予約システムとは",   about_path %></li>
         <li><%= link_to "ヘルプ",   help_path %></li>
         <% if logged_in? %>

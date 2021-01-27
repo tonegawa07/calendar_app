@@ -24,11 +24,15 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_template '/'
     assert_select "a[href=?]", login_path, count: 0
     assert_select "a[href=?]", logout_path
+    assert_select "a[href=?]", icp_reservations_path
+    assert_select "a[href=?]", cn_reservations_path
     delete logout_path
     assert_not is_logged_in?
     assert_redirected_to root_url
     follow_redirect!
     assert_select "a[href=?]", login_path
     assert_select "a[href=?]", logout_path, count: 0
+    assert_select "a[href=?]", icp_reservations_path, count: 0
+    assert_select "a[href=?]", cn_reservations_path, count: 0
   end
 end
