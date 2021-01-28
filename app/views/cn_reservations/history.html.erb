@@ -14,7 +14,7 @@
   <!-- 現在のユーザーが管理者のときに限り，ダウンロードボタンが表示される -->
   <% if current_user.admin? %>
     <!-- <%= link_to "ダウンロード(CSV)", history_cn_reservations_path(format: :csv), class: "btn btn-success" %> -->
-    <button type='submit' name='format' value='csv' class="btn btn-success"> ダウンロード (CSV) </button>
+    <button type='submit' name='format' value='csv' class="btn btn-success"> 検索結果をダウンロード (CSV) </button>
   <% end %>
 <% end %>
 

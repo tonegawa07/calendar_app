@@ -16,13 +16,13 @@ class IcpReservationsControllerTest < ActionDispatch::IntegrationTest
     get icp_reservations_path
     assert_response :success
     delete logout_path
-    log_in_as("gest")
+    log_in_as("guest")
     get icp_reservations_path
     assert_response :success
   end
 
   test "should get new when logged in as non-admin " do
-    log_in_as("gest")
+    log_in_as("guest")
     get new_icp_reservation_path, headers: { "HTTP_REFERER": "http://www.example.com/icp_reservations" }
     assert_redirected_to icp_reservations_url
   end
@@ -47,13 +47,13 @@ class IcpReservationsControllerTest < ActionDispatch::IntegrationTest
     get icp_reservation_url(@icp_reservation)
     assert_response :success
     delete logout_path
-    log_in_as("gest")
+    log_in_as("guest")
     get icp_reservation_url(@icp_reservation)
     assert_response :success
   end
 
   test "should get edit when logged in as non-admin" do
-    log_in_as("gest")
+    log_in_as("guest")
     get edit_icp_reservation_url(@icp_reservation), headers: { "HTTP_REFERER": "http://www.example.com/icp_reservations" }
     assert_redirected_to icp_reservations_url
   end
@@ -71,7 +71,7 @@ class IcpReservationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy icp_reservation when logged in as non-admin" do
-    log_in_as("gest")
+    log_in_as("guest")
     assert_no_difference('IcpReservation.count') do
       delete icp_reservation_url(@icp_reservation), headers: { "HTTP_REFERER": "http://www.example.com/icp_reservations" }
     end

@@ -3,12 +3,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(name: "example")
+    user = User.find_by(name: "admin")
     if user && user.authenticate(params[:session][:password])
       log_in user
       redirect_to root_path
     else
-      user = User.find_by(name: "gest")
+      user = User.find_by(name: "guest")
       if user && user.authenticate(params[:session][:password])
         log_in user
         redirect_to root_path
